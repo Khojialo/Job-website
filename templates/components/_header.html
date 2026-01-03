@@ -1,0 +1,29 @@
+
+
+<!-- Navbar (eng tepada) -->
+<nav class="navbar">
+    <ul>
+        <li><a href="{% url 'all_vacancy' %}" class="active">E'lonlar</a></li>
+
+       {% if request.user.is_staff %}
+    <li><a href="{% url 'add_vacancies' %}">E'lon qo'shish</a></li>
+    <li><a href="http://127.0.0.1:8000/admin/">Go to Admin</a></li>
+{% endif %}
+
+    </ul>
+</nav>
+
+<!-- Header rasmi -->
+<div class="header-image"></div>
+
+<!-- Kategoriyalar menyusi header rasmi ostida -->
+<div class="category-menu">
+    {% for category in categories %}
+    <a href="{% url 'vacancy_by_category' category.id %}">{{ category.name }}</a>
+
+    {% endfor %}
+</div>
+
+<header class="header-content">
+    <div class="logo">E'lonlar</div>
+</header>

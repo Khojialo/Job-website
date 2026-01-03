@@ -1,0 +1,11 @@
+{% if messages %}
+<div class="msgs" id="message-box">
+  {% for message in messages %}
+    <div class="msg {{ message.tags }}">
+      <span class="msg__icon" aria-hidden="true"></span>
+      <div class="msg__text">{{ message }}</div>
+      <button class="msg__close" aria-label="Close" onclick="this.parentElement.remove()">×</button>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}

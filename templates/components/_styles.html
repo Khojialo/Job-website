@@ -1,0 +1,147 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}?=v2"/>
+
+
+     <style>
+        /* --- Root ranglar --- */
+:root{
+  --msg-radius: 14px;
+  --msg-shadow: 0 6px 20px rgba(0,0,0,.08);
+  --msg-pad: 12px 14px;
+  --msg-gap: 10px;
+
+  /* Status ranglari */
+  --success-bg: #e8f8ef;
+  --success-br: #b8ebd2;
+  --success-fg: #116e3b;
+
+  --error-bg: #fdeaea;
+  --error-br: #f6c7c7;
+  --error-fg: #8a1f1f;
+
+  --warning-bg: #fff7e6;
+  --warning-br: #ffe0a6;
+  --warning-fg: #8a5a12;
+
+  --info-bg: #eaf3ff;
+  --info-br: #c9e0ff;
+  --info-fg: #0b4b8a;
+}
+
+/* Konteyner */
+.msgs{
+  display: grid;
+  gap: 10px;
+  margin: 12px 0 4px;
+}
+
+/* Umumiy karta */
+.msg{
+  position: relative;
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  align-items: start;
+  gap: var(--msg-gap);
+  padding: var(--msg-pad);
+  border-radius: var(--msg-radius);
+  border: 1px solid transparent;
+  box-shadow: var(--msg-shadow);
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+/* Matn qismi */
+.msg__text{
+  padding-top: 2px;
+}
+
+/* Yopish tugmasi */
+.msg__close{
+  align-self: start;
+  border: 0;
+  background: transparent;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0 6px;
+  cursor: pointer;
+  opacity: .6;
+}
+.msg__close:hover{ opacity: 1; }
+
+/* Chapdagi icon (CSS bilan) */
+.msg__icon{
+  width: 24px; height: 24px;
+  display: inline-block;
+  border-radius: 50%;
+  margin-top: 1px;
+  position: relative;
+}
+
+/* Animatsiya: kirishda yumshoq chiqish */
+@keyframes msg-in { from { transform: translateY(-6px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.msg{ animation: msg-in .25s ease-out; }
+
+/* --- Statuslarga mos ranglar --- */
+.msg.success{
+  background: var(--success-bg);
+  border-color: var(--success-br);
+  color: var(--success-fg);
+}
+.msg.success .msg__icon{
+  background: var(--success-fg, #116e3b);
+}
+.msg.success .msg__icon::after{
+  content: "✓";
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  color: #fff; font-weight: 700; font-size: 14px;
+}
+
+.msg.error{
+  background: var(--error-bg);
+  border-color: var(--error-br);
+  color: var(--error-fg);
+}
+.msg.error .msg__icon{ background: var(--error-fg, #8a1f1f); }
+.msg.error .msg__icon::after{
+  content: "!";
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  color: #fff; font-weight: 800; font-size: 14px;
+}
+
+.msg.warning{
+  background: var(--warning-bg);
+  border-color: var(--warning-br);
+  color: var(--warning-fg);
+}
+.msg.warning .msg__icon{ background: var(--warning-fg, #8a5a12); }
+.msg.warning .msg__icon::after{
+  content: "!";
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  color: #fff; font-weight: 800; font-size: 14px;
+}
+
+.msg.info{
+  background: var(--info-bg);
+  border-color: var(--info-br);
+  color: var(--info-fg);
+}
+.msg.info .msg__icon{ background: var(--info-fg, #0b4b8a); }
+.msg.info .msg__icon::after{
+  content: "i";
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  color: #fff; font-weight: 800; font-size: 14px;
+}
+
+/* Responsive mayda tuzatishlar */
+@media (max-width: 480px){
+  .msg{ grid-template-columns: 20px 1fr auto; font-size: 13px; }
+  .msg__icon{ width: 20px; height: 20px; }
+  .msg__close{ font-size: 16px; }
+}
+
+    </style>

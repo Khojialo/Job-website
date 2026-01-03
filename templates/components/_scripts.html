@@ -1,0 +1,38 @@
+{% load static %}
+
+<script>
+  const images = [
+    "{% static 'images/vacancy1.jpeg' %}",
+    "{% static 'images/vacancy2.jpeg' %}",
+    "{% static 'images/vacancy3.jpeg' %}",
+  ];
+</script>
+
+<script>
+    // 5 sekund (2000 ms) dan keyin o'chirish
+    setTimeout(function() {
+        let box = document.getElementById("message-box");
+        if (box) {
+            box.remove(); // butun boxni o‘chiradi
+        }
+    }, 5000);
+</script>
+
+
+<script src="{% static 'js/animation.js' %}"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const phoneField = document.getElementById('phone-field');
+    const realPhone = "{{ vacancy.phone }}";
+
+    phoneField.addEventListener('click', function() {
+        if (phoneField.textContent.includes('*')) {
+            phoneField.textContent = realPhone;
+        } else {
+            phoneField.textContent = '**** **** ****';
+        }
+    });
+});
+</script>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" style="max-width:600px; margin-top:50px;">
+
+    <h3 class="text-danger mb-3">❗ "{{ vacancy.title }}" Vakansiya o‘chirish</h3>
+    <p class="mb-4">Siz haqiqatdan ham <strong>{{ vacancy.title }}</strong> vakansiyani o‘chirmoqchimisiz?</p>
+
+   <form method="post" class="d-flex justify-content-center gap-3">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger flex-grow-1 py-2">Ha, o‘chirish</button>
+    <button type="button" onclick="window.location.href='{% url 'all_vacancy' %}'"
+            class="btn btn-primary flex-grow-1 py-2">Bekor qilish</button>
+</form>
+
+</div>
+{% endblock content %}
